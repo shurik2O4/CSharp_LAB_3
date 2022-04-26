@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LAB_3 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "LAB_3 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

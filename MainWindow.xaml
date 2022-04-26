@@ -1,0 +1,89 @@
+﻿<winex:WindowEx
+    x:Class="LAB_3.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LAB_3"
+    xmlns:winex="using:WinUIEx"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Eee"
+    MinHeight="600"
+    MinWidth="700"
+    Height="600"
+    Width="700">
+
+    <StackPanel Orientation="Vertical" Style="{StaticResource RootStackPanel}" x:Name="RootStackPanel" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+        <TextBlock Grid.Column="0" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlock}">
+            Laboratory task №3 (variant №14)
+        </TextBlock>
+
+        <Border Height="20"/>
+
+        <TextBlock Style="{StaticResource CenteredTextBlock}" MaxWidth="600" TextAlignment="Center">
+            Find a multiple of even negative elements of given array. Remove random number of elements (1 to 10) after the first even negative element of the array.
+        </TextBlock>
+
+        <Border Height="30"/>
+
+        <Grid HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition x:Name="ControlColumn" Width="160"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                <Border Height="30"/>
+
+                <TextBlock FontSize="15">Input array size:</TextBlock>
+                <!--<TextBox x:Name="InputArrayLengthTextBox" Text="{Binding}"/>-->
+                <TextBox x:Name="ArrayLengthTextBox" Text="{Binding Path=ArrayLengthText, Mode=TwoWay}" TextChanged="ArrayLengthTextBox_TextChanged"/>
+
+                <Border Height="30"/>
+
+                <TextBlock FontSize="15">Calculation result:</TextBlock>
+                <TextBox x:Name="CalcResultTextBox" Text="{Binding Path=CalcResultText, Mode=TwoWay}"/>
+
+                <!--<TextBox x:Name="DeletedElementsTextBox" Text="{Binding Path=DeletedElements, Mode=OneWay}"></TextBox>-->
+                
+                <Border Height="125"/>
+
+                <Button Width="{Binding ElementName=ControlColumn, Path=ActualWidth, Mode=OneWay}" x:Name="PopulateButton" Click="PopulateButton_Click">Populate array</Button>
+
+                <Border Height="30"/>
+
+                <Button Width="{Binding ElementName=ControlColumn, Path=ActualWidth, Mode=OneWay}" x:Name="CalcButton" Click="CalcButton_Click" IsEnabled="{Binding Path=CalcButtonEnabled, Mode=TwoWay}">Calculate result</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <TextBlock>Input</TextBlock>
+                <Border Height="5"/>
+                <ScrollViewer MaxHeight="350">
+                    <ListBox x:Name="InputArrayListBox" Height="350" ItemsSource="{Binding Path=InputArray, Mode=OneWay}"/>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="5">
+                <TextBlock>Output</TextBlock>
+                <Border Height="5"/>
+                <ScrollViewer MaxHeight="350">
+                    <ListBox x:Name="OutputArrayListBox" Height="350" ItemsSource="{Binding Path=InputArray, Mode=OneWay}"/>
+                </ScrollViewer>
+            </StackPanel>
+
+        </Grid>
+
+        <TeachingTip x:Name="ErrorTip" Title="Error" Subtitle="{Binding Path=ErrorText, Mode=OneWay}" PreferredPlacement="Auto" PlacementMargin="20" IsLightDismissEnabled="True" CloseButtonContent="Close"/>
+        
+    </StackPanel>
+</winex:WindowEx>
